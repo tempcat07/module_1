@@ -2,7 +2,7 @@
  "cells": [
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 103,
    "metadata": {
     "_cell_guid": "b1076dfc-b9ad-4769-8c92-a6c4dae69d19",
     "_uuid": "8f2839f25d086af736a60e9eeb907d3b93b6e0e5",
@@ -21,7 +21,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 104,
    "metadata": {
     "_cell_guid": "79c7e3d0-c299-4dcb-8224-4455121ee9b0",
     "_uuid": "d629ff2d2480ee46fbb7e2d37f6b5fab8052498a",
@@ -31,62 +31,186 @@
    },
    "outputs": [
     {
-     "output_type": "execute_result",
      "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>imdb_id</th>\n",
+       "      <th>budget</th>\n",
+       "      <th>revenue</th>\n",
+       "      <th>original_title</th>\n",
+       "      <th>cast</th>\n",
+       "      <th>director</th>\n",
+       "      <th>tagline</th>\n",
+       "      <th>overview</th>\n",
+       "      <th>runtime</th>\n",
+       "      <th>genres</th>\n",
+       "      <th>production_companies</th>\n",
+       "      <th>release_date</th>\n",
+       "      <th>vote_average</th>\n",
+       "      <th>release_year</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>1058</th>\n",
+       "      <td>tt1535438</td>\n",
+       "      <td>30000000</td>\n",
+       "      <td>114281051</td>\n",
+       "      <td>Hope Springs</td>\n",
+       "      <td>Meryl Streep|Steve Carell|Tommy Lee Jones|Jean...</td>\n",
+       "      <td>David Frankel</td>\n",
+       "      <td>Sometimes to keep the magic, you need to learn...</td>\n",
+       "      <td>After thirty years of marriage, a middle-aged ...</td>\n",
+       "      <td>100</td>\n",
+       "      <td>Drama|Comedy|Romance</td>\n",
+       "      <td>Columbia Pictures|Mandate Pictures|Escape Arti...</td>\n",
+       "      <td>8/7/2012</td>\n",
+       "      <td>5.6</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>400</th>\n",
+       "      <td>tt0989757</td>\n",
+       "      <td>25000000</td>\n",
+       "      <td>114977104</td>\n",
+       "      <td>Dear John</td>\n",
+       "      <td>Amanda Seyfried|Channing Tatum|Henry Thomas|Ri...</td>\n",
+       "      <td>Lasse HallstrÃ¶m</td>\n",
+       "      <td>Love brought them together will fate tear them...</td>\n",
+       "      <td>Sergeant John Tyree is home on a 2 week leave ...</td>\n",
+       "      <td>115</td>\n",
+       "      <td>Drama|Romance|War</td>\n",
+       "      <td>Screen Gems</td>\n",
+       "      <td>2/4/2010</td>\n",
+       "      <td>6.5</td>\n",
+       "      <td>2010</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>648</th>\n",
+       "      <td>tt1125849</td>\n",
+       "      <td>6000000</td>\n",
+       "      <td>44703995</td>\n",
+       "      <td>The Wrestler</td>\n",
+       "      <td>Mickey Rourke|Marisa Tomei|Evan Rachel Wood|Aj...</td>\n",
+       "      <td>Darren Aronofsky</td>\n",
+       "      <td>Love. Pain. Glory.</td>\n",
+       "      <td>Aging wrestler Randy \"The Ram\" Robinson is lon...</td>\n",
+       "      <td>109</td>\n",
+       "      <td>Drama|Romance</td>\n",
+       "      <td>Saturn Films|Wild Bunch|Protozoa Pictures|Top ...</td>\n",
+       "      <td>9/7/2008</td>\n",
+       "      <td>7.0</td>\n",
+       "      <td>2008</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1577</th>\n",
+       "      <td>tt0318627</td>\n",
+       "      <td>45000000</td>\n",
+       "      <td>129394835</td>\n",
+       "      <td>Resident Evil: Apocalypse</td>\n",
+       "      <td>Milla Jovovich|Sienna Guillory|Oded Fehr|Thoma...</td>\n",
+       "      <td>Alexander Witt</td>\n",
+       "      <td>You're all going to die.</td>\n",
+       "      <td>As the city is locked down under quarantine, A...</td>\n",
+       "      <td>94</td>\n",
+       "      <td>Horror|Action|Science Fiction</td>\n",
+       "      <td>Impact Pictures|Constantin Film Ltd.</td>\n",
+       "      <td>9/10/2004</td>\n",
+       "      <td>6.1</td>\n",
+       "      <td>2004</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1218</th>\n",
+       "      <td>tt1288558</td>\n",
+       "      <td>17000000</td>\n",
+       "      <td>97542952</td>\n",
+       "      <td>Evil Dead</td>\n",
+       "      <td>Jane Levy|Jessica Lucas|Shiloh Fernandez|Lou T...</td>\n",
+       "      <td>Fede Alvarez</td>\n",
+       "      <td>The most terrifying film you will ever experie...</td>\n",
+       "      <td>Evil Dead, the fourth installment of the Evil ...</td>\n",
+       "      <td>91</td>\n",
+       "      <td>Horror</td>\n",
+       "      <td>TriStar Pictures|Ghost House Pictures|FilmDist...</td>\n",
+       "      <td>4/5/2013</td>\n",
+       "      <td>6.3</td>\n",
+       "      <td>2013</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
       "text/plain": [
-       "        imdb_id     budget    revenue                       original_title  \\\n",
-       "1302  tt0884726   70000000   18662027      Legends of Oz: Dorothy's Return   \n",
-       "285   tt0765010   26000000   43318349                             Brothers   \n",
-       "25    tt2381249  150000000  682330139   Mission: Impossible - Rogue Nation   \n",
-       "337   tt0963178   50000000   60161391                    The International   \n",
-       "1312  tt0330373  150000000  895921036  Harry Potter and the Goblet of Fire   \n",
+       "        imdb_id    budget    revenue             original_title  \\\n",
+       "1058  tt1535438  30000000  114281051               Hope Springs   \n",
+       "400   tt0989757  25000000  114977104                  Dear John   \n",
+       "648   tt1125849   6000000   44703995               The Wrestler   \n",
+       "1577  tt0318627  45000000  129394835  Resident Evil: Apocalypse   \n",
+       "1218  tt1288558  17000000   97542952                  Evil Dead   \n",
        "\n",
-       "                                                   cast  \\\n",
-       "1302  Lea Michele|Dan Aykroyd|Patrick Stewart|Hugh D...   \n",
-       "285   Tobey Maguire|Jake Gyllenhaal|Natalie Portman|...   \n",
-       "25    Tom Cruise|Jeremy Renner|Simon Pegg|Rebecca Fe...   \n",
-       "337   Clive Owen|Naomi Watts|Armin Mueller-Stahl|Ulr...   \n",
-       "1312  Daniel Radcliffe|Rupert Grint|Emma Watson|Ralp...   \n",
+       "                                                   cast          director  \\\n",
+       "1058  Meryl Streep|Steve Carell|Tommy Lee Jones|Jean...     David Frankel   \n",
+       "400   Amanda Seyfried|Channing Tatum|Henry Thomas|Ri...  Lasse HallstrÃ¶m   \n",
+       "648   Mickey Rourke|Marisa Tomei|Evan Rachel Wood|Aj...  Darren Aronofsky   \n",
+       "1577  Milla Jovovich|Sienna Guillory|Oded Fehr|Thoma...    Alexander Witt   \n",
+       "1218  Jane Levy|Jessica Lucas|Shiloh Fernandez|Lou T...      Fede Alvarez   \n",
        "\n",
-       "                   director                               tagline  \\\n",
-       "1302         Dan St. Pierre              There's trouble in OZ...   \n",
-       "285            Jim Sheridan  There are two sides to every family.   \n",
-       "25    Christopher McQuarrie  Desperate Times. Desperate Measures.   \n",
-       "337              Tom Tykwer       Is your money making a killing?   \n",
-       "1312            Mike Newell   Dark And Difficult Times Lie Ahead.   \n",
+       "                                                tagline  \\\n",
+       "1058  Sometimes to keep the magic, you need to learn...   \n",
+       "400   Love brought them together will fate tear them...   \n",
+       "648                                  Love. Pain. Glory.   \n",
+       "1577                           You're all going to die.   \n",
+       "1218  The most terrifying film you will ever experie...   \n",
        "\n",
        "                                               overview  runtime  \\\n",
-       "1302  Dorothy wakes up in post-tornado Kansas, only ...       88   \n",
-       "285   When his helicopter goes down during his fourt...      104   \n",
-       "25    Ethan and team take on their most impossible m...      131   \n",
-       "337   An interpol agent and an attorney are determin...      118   \n",
-       "1312  Harry starts his fourth year at Hogwarts, comp...      157   \n",
+       "1058  After thirty years of marriage, a middle-aged ...      100   \n",
+       "400   Sergeant John Tyree is home on a 2 week leave ...      115   \n",
+       "648   Aging wrestler Randy \"The Ram\" Robinson is lon...      109   \n",
+       "1577  As the city is locked down under quarantine, A...       94   \n",
+       "1218  Evil Dead, the fourth installment of the Evil ...       91   \n",
        "\n",
-       "                        genres  \\\n",
-       "1302    Animation|Music|Family   \n",
-       "285         Drama|Thriller|War   \n",
-       "25                      Action   \n",
-       "337       Drama|Thriller|Crime   \n",
-       "1312  Adventure|Fantasy|Family   \n",
+       "                             genres  \\\n",
+       "1058           Drama|Comedy|Romance   \n",
+       "400               Drama|Romance|War   \n",
+       "648                   Drama|Romance   \n",
+       "1577  Horror|Action|Science Fiction   \n",
+       "1218                         Horror   \n",
        "\n",
        "                                   production_companies release_date  \\\n",
-       "1302   Prana Animation Studios|Summertime Entertainment    6/13/2013   \n",
-       "285   Lionsgate|Relativity Media|Sighvatsson Films|M...    1/27/2009   \n",
-       "25    Paramount Pictures|Skydance Productions|China ...    7/23/2015   \n",
-       "337   Studio Babelsberg|Atlas Entertainment|Mosaic M...     2/3/2009   \n",
-       "1312  Patalex IV Productions Limited|Warner Bros.|He...    11/5/2005   \n",
+       "1058  Columbia Pictures|Mandate Pictures|Escape Arti...     8/7/2012   \n",
+       "400                                         Screen Gems     2/4/2010   \n",
+       "648   Saturn Films|Wild Bunch|Protozoa Pictures|Top ...     9/7/2008   \n",
+       "1577               Impact Pictures|Constantin Film Ltd.    9/10/2004   \n",
+       "1218  TriStar Pictures|Ghost House Pictures|FilmDist...     4/5/2013   \n",
        "\n",
        "      vote_average  release_year  \n",
-       "1302           6.1          2013  \n",
-       "285            6.7          2009  \n",
-       "25             7.1          2015  \n",
-       "337            5.8          2009  \n",
-       "1312           7.3          2005  "
-      ],
-      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>imdb_id</th>\n      <th>budget</th>\n      <th>revenue</th>\n      <th>original_title</th>\n      <th>cast</th>\n      <th>director</th>\n      <th>tagline</th>\n      <th>overview</th>\n      <th>runtime</th>\n      <th>genres</th>\n      <th>production_companies</th>\n      <th>release_date</th>\n      <th>vote_average</th>\n      <th>release_year</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>1302</th>\n      <td>tt0884726</td>\n      <td>70000000</td>\n      <td>18662027</td>\n      <td>Legends of Oz: Dorothy's Return</td>\n      <td>Lea Michele|Dan Aykroyd|Patrick Stewart|Hugh D...</td>\n      <td>Dan St. Pierre</td>\n      <td>There's trouble in OZ...</td>\n      <td>Dorothy wakes up in post-tornado Kansas, only ...</td>\n      <td>88</td>\n      <td>Animation|Music|Family</td>\n      <td>Prana Animation Studios|Summertime Entertainment</td>\n      <td>6/13/2013</td>\n      <td>6.1</td>\n      <td>2013</td>\n    </tr>\n    <tr>\n      <th>285</th>\n      <td>tt0765010</td>\n      <td>26000000</td>\n      <td>43318349</td>\n      <td>Brothers</td>\n      <td>Tobey Maguire|Jake Gyllenhaal|Natalie Portman|...</td>\n      <td>Jim Sheridan</td>\n      <td>There are two sides to every family.</td>\n      <td>When his helicopter goes down during his fourt...</td>\n      <td>104</td>\n      <td>Drama|Thriller|War</td>\n      <td>Lionsgate|Relativity Media|Sighvatsson Films|M...</td>\n      <td>1/27/2009</td>\n      <td>6.7</td>\n      <td>2009</td>\n    </tr>\n    <tr>\n      <th>25</th>\n      <td>tt2381249</td>\n      <td>150000000</td>\n      <td>682330139</td>\n      <td>Mission: Impossible - Rogue Nation</td>\n      <td>Tom Cruise|Jeremy Renner|Simon Pegg|Rebecca Fe...</td>\n      <td>Christopher McQuarrie</td>\n      <td>Desperate Times. Desperate Measures.</td>\n      <td>Ethan and team take on their most impossible m...</td>\n      <td>131</td>\n      <td>Action</td>\n      <td>Paramount Pictures|Skydance Productions|China ...</td>\n      <td>7/23/2015</td>\n      <td>7.1</td>\n      <td>2015</td>\n    </tr>\n    <tr>\n      <th>337</th>\n      <td>tt0963178</td>\n      <td>50000000</td>\n      <td>60161391</td>\n      <td>The International</td>\n      <td>Clive Owen|Naomi Watts|Armin Mueller-Stahl|Ulr...</td>\n      <td>Tom Tykwer</td>\n      <td>Is your money making a killing?</td>\n      <td>An interpol agent and an attorney are determin...</td>\n      <td>118</td>\n      <td>Drama|Thriller|Crime</td>\n      <td>Studio Babelsberg|Atlas Entertainment|Mosaic M...</td>\n      <td>2/3/2009</td>\n      <td>5.8</td>\n      <td>2009</td>\n    </tr>\n    <tr>\n      <th>1312</th>\n      <td>tt0330373</td>\n      <td>150000000</td>\n      <td>895921036</td>\n      <td>Harry Potter and the Goblet of Fire</td>\n      <td>Daniel Radcliffe|Rupert Grint|Emma Watson|Ralp...</td>\n      <td>Mike Newell</td>\n      <td>Dark And Difficult Times Lie Ahead.</td>\n      <td>Harry starts his fourth year at Hogwarts, comp...</td>\n      <td>157</td>\n      <td>Adventure|Fantasy|Family</td>\n      <td>Patalex IV Productions Limited|Warner Bros.|He...</td>\n      <td>11/5/2005</td>\n      <td>7.3</td>\n      <td>2005</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+       "1058           5.6          2012  \n",
+       "400            6.5          2010  \n",
+       "648            7.0          2008  \n",
+       "1577           6.1          2004  \n",
+       "1218           6.3          2013  "
+      ]
      },
+     "execution_count": 104,
      "metadata": {},
-     "execution_count": 3
+     "output_type": "execute_result"
     }
    ],
    "source": [
@@ -96,7 +220,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": 105,
    "metadata": {
     "colab": {},
     "colab_type": "code",
@@ -104,8 +228,102 @@
    },
    "outputs": [
     {
-     "output_type": "execute_result",
      "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>budget</th>\n",
+       "      <th>revenue</th>\n",
+       "      <th>runtime</th>\n",
+       "      <th>vote_average</th>\n",
+       "      <th>release_year</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>count</th>\n",
+       "      <td>1.889000e+03</td>\n",
+       "      <td>1.889000e+03</td>\n",
+       "      <td>1889.000000</td>\n",
+       "      <td>1889.000000</td>\n",
+       "      <td>1889.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>mean</th>\n",
+       "      <td>5.431083e+07</td>\n",
+       "      <td>1.553653e+08</td>\n",
+       "      <td>109.658549</td>\n",
+       "      <td>6.140762</td>\n",
+       "      <td>2007.860773</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>std</th>\n",
+       "      <td>4.858721e+07</td>\n",
+       "      <td>2.146698e+08</td>\n",
+       "      <td>18.017041</td>\n",
+       "      <td>0.764763</td>\n",
+       "      <td>4.468841</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>min</th>\n",
+       "      <td>5.000000e+06</td>\n",
+       "      <td>2.033165e+06</td>\n",
+       "      <td>63.000000</td>\n",
+       "      <td>3.300000</td>\n",
+       "      <td>2000.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>25%</th>\n",
+       "      <td>2.000000e+07</td>\n",
+       "      <td>3.456058e+07</td>\n",
+       "      <td>97.000000</td>\n",
+       "      <td>5.600000</td>\n",
+       "      <td>2004.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>50%</th>\n",
+       "      <td>3.800000e+07</td>\n",
+       "      <td>8.361541e+07</td>\n",
+       "      <td>107.000000</td>\n",
+       "      <td>6.100000</td>\n",
+       "      <td>2008.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>75%</th>\n",
+       "      <td>7.200000e+07</td>\n",
+       "      <td>1.782626e+08</td>\n",
+       "      <td>120.000000</td>\n",
+       "      <td>6.600000</td>\n",
+       "      <td>2012.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>max</th>\n",
+       "      <td>3.800000e+08</td>\n",
+       "      <td>2.781506e+09</td>\n",
+       "      <td>214.000000</td>\n",
+       "      <td>8.100000</td>\n",
+       "      <td>2015.000000</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
       "text/plain": [
        "             budget       revenue      runtime  vote_average  release_year\n",
        "count  1.889000e+03  1.889000e+03  1889.000000   1889.000000   1889.000000\n",
@@ -116,11 +334,11 @@
        "50%    3.800000e+07  8.361541e+07   107.000000      6.100000   2008.000000\n",
        "75%    7.200000e+07  1.782626e+08   120.000000      6.600000   2012.000000\n",
        "max    3.800000e+08  2.781506e+09   214.000000      8.100000   2015.000000"
-      ],
-      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>budget</th>\n      <th>revenue</th>\n      <th>runtime</th>\n      <th>vote_average</th>\n      <th>release_year</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>count</th>\n      <td>1.889000e+03</td>\n      <td>1.889000e+03</td>\n      <td>1889.000000</td>\n      <td>1889.000000</td>\n      <td>1889.000000</td>\n    </tr>\n    <tr>\n      <th>mean</th>\n      <td>5.431083e+07</td>\n      <td>1.553653e+08</td>\n      <td>109.658549</td>\n      <td>6.140762</td>\n      <td>2007.860773</td>\n    </tr>\n    <tr>\n      <th>std</th>\n      <td>4.858721e+07</td>\n      <td>2.146698e+08</td>\n      <td>18.017041</td>\n      <td>0.764763</td>\n      <td>4.468841</td>\n    </tr>\n    <tr>\n      <th>min</th>\n      <td>5.000000e+06</td>\n      <td>2.033165e+06</td>\n      <td>63.000000</td>\n      <td>3.300000</td>\n      <td>2000.000000</td>\n    </tr>\n    <tr>\n      <th>25%</th>\n      <td>2.000000e+07</td>\n      <td>3.456058e+07</td>\n      <td>97.000000</td>\n      <td>5.600000</td>\n      <td>2004.000000</td>\n    </tr>\n    <tr>\n      <th>50%</th>\n      <td>3.800000e+07</td>\n      <td>8.361541e+07</td>\n      <td>107.000000</td>\n      <td>6.100000</td>\n      <td>2008.000000</td>\n    </tr>\n    <tr>\n      <th>75%</th>\n      <td>7.200000e+07</td>\n      <td>1.782626e+08</td>\n      <td>120.000000</td>\n      <td>6.600000</td>\n      <td>2012.000000</td>\n    </tr>\n    <tr>\n      <th>max</th>\n      <td>3.800000e+08</td>\n      <td>2.781506e+09</td>\n      <td>214.000000</td>\n      <td>8.100000</td>\n      <td>2015.000000</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+      ]
      },
+     "execution_count": 105,
      "metadata": {},
-     "execution_count": 4
+     "output_type": "execute_result"
     }
    ],
    "source": [
@@ -139,7 +357,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 106,
    "metadata": {
     "colab": {},
     "colab_type": "code",
@@ -179,7 +397,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 107,
    "metadata": {
     "colab": {},
     "colab_type": "code",
@@ -197,7 +415,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 108,
    "metadata": {
     "colab": {},
     "colab_type": "code",
@@ -205,12 +423,49 @@
    },
    "outputs": [
     {
-     "output_type": "display_data",
      "data": {
-      "text/plain": "                                  original_title    imdb_id     budget\n723  Pirates of the Caribbean: On Stranger Tides  tt1298650  380000000",
-      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>original_title</th>\n      <th>imdb_id</th>\n      <th>budget</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>723</th>\n      <td>Pirates of the Caribbean: On Stranger Tides</td>\n      <td>tt1298650</td>\n      <td>380000000</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>original_title</th>\n",
+       "      <th>imdb_id</th>\n",
+       "      <th>budget</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>723</th>\n",
+       "      <td>Pirates of the Caribbean: On Stranger Tides</td>\n",
+       "      <td>tt1298650</td>\n",
+       "      <td>380000000</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "                                  original_title    imdb_id     budget\n",
+       "723  Pirates of the Caribbean: On Stranger Tides  tt1298650  380000000"
+      ]
      },
-     "metadata": {}
+     "metadata": {},
+     "output_type": "display_data"
     }
    ],
    "source": [
@@ -233,7 +488,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
+   "execution_count": 109,
    "metadata": {
     "colab": {},
     "colab_type": "code",
@@ -241,10 +496,11 @@
    },
    "outputs": [
     {
-     "output_type": "stream",
      "name": "stdout",
+     "output_type": "stream",
      "text": [
-      "                                  original_title    imdb_id\n723  Pirates of the Caribbean: On Stranger Tides  tt1298650\n"
+      "                                  original_title    imdb_id\n",
+      "723  Pirates of the Caribbean: On Stranger Tides  tt1298650\n"
      ]
     }
    ],
@@ -266,7 +522,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
+   "execution_count": 110,
    "metadata": {
     "colab": {},
     "colab_type": "code",
@@ -281,7 +537,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 10,
+   "execution_count": 111,
    "metadata": {
     "colab": {},
     "colab_type": "code",
@@ -289,10 +545,11 @@
    },
    "outputs": [
     {
-     "output_type": "stream",
      "name": "stdout",
+     "output_type": "stream",
      "text": [
-      "1157    Gods and Generals (tt0279111)\ndtype: object\n"
+      "1157    Gods and Generals (tt0279111)\n",
+      "dtype: object\n"
      ]
     }
    ],
@@ -318,7 +575,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 11,
+   "execution_count": 112,
    "metadata": {
     "colab": {},
     "colab_type": "code",
@@ -326,10 +583,11 @@
    },
    "outputs": [
     {
-     "output_type": "stream",
      "name": "stdout",
+     "output_type": "stream",
      "text": [
-      "768    Winnie the Pooh (tt1449283)\ndtype: object\n"
+      "768    Winnie the Pooh (tt1449283)\n",
+      "dtype: object\n"
      ]
     }
    ],
@@ -351,23 +609,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 14,
+   "execution_count": 113,
    "metadata": {
     "colab": {},
     "colab_type": "code",
     "id": "5K6dKZYVVp-q"
    },
-   "outputs": [
-    {
-     "output_type": "stream",
-     "name": "stdout",
-     "text": [
-      "110\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
-    "print(round(data.runtime.mean()))\n",
+    "round(data.runtime.mean()) #\n",
     "answers['4'] = '2. 110'"
    ]
   },
@@ -383,7 +633,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 15,
+   "execution_count": 148,
    "metadata": {
     "colab": {},
     "colab_type": "code",
@@ -408,7 +658,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 16,
+   "execution_count": 115,
    "metadata": {
     "colab": {},
     "colab_type": "code",
@@ -416,10 +666,11 @@
    },
    "outputs": [
     {
-     "output_type": "stream",
      "name": "stdout",
+     "output_type": "stream",
      "text": [
-      "239    Avatar (tt0499549)\ndtype: object\n"
+      "239    Avatar (tt0499549)\n",
+      "dtype: object\n"
      ]
     }
    ],
@@ -444,7 +695,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 17,
+   "execution_count": 116,
    "metadata": {
     "colab": {},
     "colab_type": "code",
@@ -452,10 +703,11 @@
    },
    "outputs": [
     {
-     "output_type": "stream",
      "name": "stdout",
+     "output_type": "stream",
      "text": [
-      "1245    The Lone Ranger (tt1210819)\ndtype: object\n"
+      "1245    The Lone Ranger (tt1210819)\n",
+      "dtype: object\n"
      ]
     }
    ],
@@ -480,7 +732,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 18,
+   "execution_count": 117,
    "metadata": {
     "colab": {},
     "colab_type": "code",
@@ -488,8 +740,8 @@
    },
    "outputs": [
     {
-     "output_type": "stream",
      "name": "stdout",
+     "output_type": "stream",
      "text": [
       "1478\n"
      ]
@@ -514,7 +766,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 19,
+   "execution_count": 118,
    "metadata": {
     "colab": {},
     "colab_type": "code",
@@ -522,10 +774,11 @@
    },
    "outputs": [
     {
-     "output_type": "stream",
      "name": "stdout",
+     "output_type": "stream",
      "text": [
-      "599    The Dark Knight (tt0468569)\ndtype: object\n"
+      "599    The Dark Knight (tt0468569)\n",
+      "dtype: object\n"
      ]
     }
    ],
@@ -547,7 +800,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 20,
+   "execution_count": 119,
    "metadata": {
     "colab": {},
     "colab_type": "code",
@@ -555,10 +808,11 @@
    },
    "outputs": [
     {
-     "output_type": "stream",
      "name": "stdout",
+     "output_type": "stream",
      "text": [
-      "1245    The Lone Ranger (tt1210819)\ndtype: object\n"
+      "1245    The Lone Ranger (tt1210819)\n",
+      "dtype: object\n"
      ]
     }
    ],
@@ -583,28 +837,20 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 22,
+   "execution_count": 120,
    "metadata": {
     "colab": {},
     "colab_type": "code",
     "id": "zsJAwJ8QVp_J"
    },
-   "outputs": [
-    {
-     "output_type": "stream",
-     "name": "stdout",
-     "text": [
-      "Drama\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "# эту задачу тоже можно решать разными подходами, попробуй реализовать разные варианты\n",
     "# если будешь добавлять функцию - выноси ее в предобработку что в начале\n",
     "dd = data.genres.str.split('|') # колонку \n",
     "de = dd.sum()\n",
     "ds =pd.Series((v[:] for v in de))\n",
-    "print(ds.value_counts().index[0])\n",
+    "ds.value_counts().index[0]\n",
     "answers['11'] = '3. Drama'"
    ]
   },
@@ -641,21 +887,13 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 24,
+   "execution_count": 121,
    "metadata": {
     "colab": {},
     "colab_type": "code",
     "id": "Tmt8MaK1Vp_R"
    },
-   "outputs": [
-    {
-     "output_type": "stream",
-     "name": "stdout",
-     "text": [
-      "Drama\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "data = pd.read_csv('movie_bd_v5.csv')\n",
     "pdata = data.copy()\n",
@@ -663,7 +901,7 @@
     "pdata['genres_all'] = pdata['genres'].str.split('|')\n",
     "pdata = pdata.explode('genres_all')\n",
     "profit_pdata = pdata[(pdata.profit > 0)]\n",
-    "print(profit_pdata['genres_all'].value_counts(ascending=False).index[0])\n",
+    "profit_pdata['genres_all'].value_counts(ascending=False).index[0]\n",
     "answers['12'] = '1. Drama'"
    ]
   },
@@ -1237,7 +1475,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.8.3-final"
+   "version": "3.8.3"
   }
  },
  "nbformat": 4,
